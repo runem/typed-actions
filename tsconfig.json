@@ -1,0 +1,20 @@
+{
+	"include": [
+		"src/**/*"
+	],
+	"exclude": [],
+	"compilerOptions": {
+		"target": "es2017",
+		"module": "es2015",
+		"lib": [
+			"esnext"
+		],
+		"declaration": true,
+		"declarationMap": true,
+		"outDir": "./dist",
+		"rootDir": "./src",
+		"strict": true,
+		"noImplicitReturns": true,
+		"noFallthroughCasesInSwitch": true
+	}
+}

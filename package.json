@@ -1,0 +1,38 @@
+{
+	"name": "@appnest/typed-actions",
+	"version": "1.0.0",
+	"description": "A lightweight library to create and type check flux/redux actions in typescript",
+	"author": "runem",
+	"license": "MIT",
+	"scripts": {
+		"start": "node lib/index.cjs.js",
+		"watch": "rollup -c --watch",
+		"build": "rollup -c",
+		"checksize": "npx size-limit lib/index.esm.js"
+	},
+	"main": "lib/index.cjs.js",
+	"module": "lib/index.esm.js",
+	"typings": "lib/index.d.ts",
+	"files": [
+		"/lib/",
+		"/src/",
+		"!/src/test/",
+		"!**/.*"
+	],
+	"keywords": [
+		"typescript",
+		"typesafe",
+		"actions",
+		"redux",
+		"flux",
+		"action-creator"
+	],
+	"dependencies": {
+	},
+	"devDependencies": {
+		"rollup-plugin-commonjs": "^9.2.0",
+		"rollup-plugin-typescript2": "^0.17.2",
+		"rollup": "^0.67.0",
+		"typescript": "^3.1.6"
+	}
+}

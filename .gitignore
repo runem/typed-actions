@@ -1,0 +1,10 @@
+typed-actions-1.0.0.tgz
+.DS_Store
+.idea
+dist
+lib
+.rpt2_cache
+node_modules
+
+# temporary
+src/test/index.ts

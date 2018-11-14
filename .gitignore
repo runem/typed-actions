@@ -5,6 +5,7 @@ dist
 lib
 .rpt2_cache
 node_modules
+*.tgz
 
 # temporary
 src/test/index.ts

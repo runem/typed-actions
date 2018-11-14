@@ -14,10 +14,7 @@
 	"module": "lib/index.esm.js",
 	"typings": "lib/index.d.ts",
 	"files": [
-		"/lib/",
-		"/src/",
-		"!/src/test/",
-		"!**/.*"
+		"/lib/"
 	],
 	"keywords": [
 		"typescript",
@@ -27,10 +24,9 @@
 		"flux",
 		"action-creator"
 	],
-	"dependencies": {
-	},
+	"dependencies": {},
 	"devDependencies": {
-		"rollup-plugin-typescript2": "^0.17.2",
+		"@wessberg/rollup-plugin-ts": "^1.1.3",
 		"rollup": "^0.67.0",
 		"typescript": "^3.1.6"
 	}

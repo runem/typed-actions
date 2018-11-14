@@ -1,4 +1,4 @@
-import typescript from "rollup-plugin-typescript2";
+import ts from "@wessberg/rollup-plugin-ts";
 
 const pkg = require("./package.json");
 const input = "src/index.ts";
@@ -15,7 +15,7 @@ export default [
 			format: "cjs"
 		}],
 		plugins: [
-			typescript({clean: true})
+			ts()
 		],
 		watch
 	}

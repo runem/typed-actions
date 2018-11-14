@@ -3,7 +3,6 @@ typed-actions-1.0.0.tgz
 .idea
 dist
 lib
-.rpt2_cache
 node_modules
 *.tgz
 

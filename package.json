@@ -12,7 +12,7 @@
 	},
 	"main": "lib/index.cjs.js",
 	"module": "lib/index.esm.js",
-	"typings": "lib/index.d.ts",
+	"typings": "lib/index.esm.d.ts",
 	"files": [
 		"/lib/"
 	],

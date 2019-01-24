@@ -1,4 +1,4 @@
-import { OptionalSpreadTuple, OptionalSpreadTupleAlwaysOptional } from "../helper";
+import { IfVoid, OptionalSpreadTuple, OptionalSpreadTupleAlwaysOptional } from "../helper";
 import { Action, ActionIdType, ActionStatusKind, DEFAULT_ACTION_STATUS_KIND, DefaultActionMetaType, DefaultActionPayloadType } from "./action";
 import { mkAction } from "./mk-action";
 
@@ -37,7 +37,7 @@ export interface ActionCreatorWithMeta<Payload = P, Meta = M> extends ActionCrea
  * @param id
  * @param status
  */
-export function actionCreator<Payload = P, Meta = M> (id: ActionIdType, status?: ActionStatusKind): Meta extends void ? ActionCreatorWithMeta<Payload, Meta> : ActionCreator<Payload, Meta>;
+export function actionCreator<Payload = P, Meta = M> (id: ActionIdType, status?: ActionStatusKind): IfVoid<Meta, ActionCreatorWithMeta<Payload, Meta>, ActionCreator<Payload, Meta>>;
 export function actionCreator<Payload = P, Meta = M> (id: ActionIdType, status: ActionStatusKind, defaultMeta: Meta): ActionCreatorWithMeta<Payload, Meta>;
 export function actionCreator<Payload = P, Meta = M> (id: ActionIdType, status: ActionStatusKind = DEFAULT_ACTION_STATUS_KIND, defaultMeta?: Meta): ActionCreator<Payload, Meta> | ActionCreatorWithMeta<Payload, Meta> {
 
@@ -48,6 +48,6 @@ export function actionCreator<Payload = P, Meta = M> (id: ActionIdType, status: 
 		mkAction(id, status, payloadAndMeta[0], payloadAndMeta[1] || defaultMeta);
 
 	// Assign "id", "status" and optional "meta" to the function.
-	return Object.assign(func, {id, status, meta: defaultMeta});
+	return Object.assign(func, {id, status, meta: defaultMeta}) as ActionCreator<Payload, Meta>;
 
 }

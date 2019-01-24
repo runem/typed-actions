@@ -1,5 +1,6 @@
 import { ActionIdType, ActionStatusKind, DefaultActionMetaType, DefaultActionPayloadType } from "../action/action";
 import { ActionCreator, actionCreator, ActionCreatorWithMeta } from "../action/action-creator";
+import { IfVoid } from "../helper";
 
 type P = DefaultActionPayloadType;
 type M = DefaultActionMetaType;
@@ -38,7 +39,7 @@ export interface AsyncActionCreatorWithMeta<Start = P, Success = P, Failure = P,
  * Use it as a function to add predefined metadata to the action creator.
  * @param id
  */
-export function asyncActionCreator<Start = P, Success = P, Failure = P, Meta = M> (id: ActionIdType): Meta extends void ? AsyncActionCreatorWithMeta<Start, Success, Failure, Meta> : AsyncActionCreator<Start, Success, Failure, Meta>;
+export function asyncActionCreator<Start = P, Success = P, Failure = P, Meta = M> (id: ActionIdType): IfVoid<Meta, AsyncActionCreatorWithMeta<Start, Success, Failure, Meta>, AsyncActionCreator<Start, Success, Failure, Meta>>;
 export function asyncActionCreator<Start = P, Success = P, Failure = P, Meta = M> (id: ActionIdType, defaultMeta: Meta): AsyncActionCreatorWithMeta<Start, Success, Failure, Meta>;
 export function asyncActionCreator<Start = P, Success = P, Failure = P, Meta = M> (id: ActionIdType, defaultMeta?: Meta): AsyncActionCreator<Start, Success, Failure, Meta> | AsyncActionCreatorWithMeta<Start, Success, Failure, Meta> {
 

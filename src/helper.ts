@@ -18,7 +18,7 @@
  * <undefined, defined>     =>  [T, U]
  * <defined, defined>       =>  [T, U]
  */
-export type OptionalSpreadTuple<T, U> = U extends void ? (T extends void ? [T?, U?] : [T, U?]) : [T, U]
+export type OptionalSpreadTuple<T, U> = IfVoid<U, IfVoid<T, [T?, U?], [T, U?]>, [T, U]>
 
 /**
  * Optional spread two generic parameters always forcing the last one to be optional.
@@ -27,4 +27,12 @@ export type OptionalSpreadTuple<T, U> = U extends void ? (T extends void ? [T?, 
  * <undefined, defined>     =>  [T, U?]
  * <defined, defined>       =>  [T, U?]
  */
-export type OptionalSpreadTupleAlwaysOptional<T, U> = T extends void ? [T?, U?] : [T, U?]
+export type OptionalSpreadTupleAlwaysOptional<T, U> = IfVoid<T, [T?, U?], [T, U?]>
+
+
+/**
+ * Choose the first type if T is "void".
+ * Choose the second type if T is not "void".
+ * Checks for undefined and null because "void" matches both.
+ */
+export type IfVoid<T, VoidType, ElseType> = T extends undefined ? ElseType : (T extends null ? ElseType : (T extends void ? VoidType : ElseType))

@@ -1,5 +1,6 @@
 import { ActionIdType, DefaultActionMetaType, DefaultActionPayloadType } from "../action/action";
 import { AsyncActionCreator, asyncActionCreator, AsyncActionCreatorWithMeta } from "../async-action/async-action-creator";
+import { IfVoid } from "../helper";
 
 /**
  * Default action creator with built in metadata where only the Success and Meta types are user defined.
@@ -29,7 +30,7 @@ let n = 0;
  * @param idOrNamespace
  * @param id
  */
-export function defaultAsyncActionCreator<Success = DefaultActionPayloadType, Meta = DefaultActionMetaType> (idOrNamespace?: ActionIdType, id?: ActionIdType): Meta extends void ? DefaultAsyncActionCreatorWithMeta<Success, Meta> : DefaultAsyncActionCreator<Success, Meta> {
+export function defaultAsyncActionCreator<Success = DefaultActionPayloadType, Meta = DefaultActionMetaType> (idOrNamespace?: ActionIdType, id?: ActionIdType): IfVoid<Meta, DefaultAsyncActionCreatorWithMeta<Success, Meta>, DefaultAsyncActionCreator<Success, Meta>> {
 
 	if (idOrNamespace == null) {
 		// Auto generate an id if needed

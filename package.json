@@ -1,6 +1,6 @@
 {
 	"name": "@appnest/typed-actions",
-	"version": "1.0.3",
+	"version": "1.0.4",
 	"description": "A lightweight library to create and type check flux/redux actions in typescript",
 	"author": "runem",
 	"license": "MIT",

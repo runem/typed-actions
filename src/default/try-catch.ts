@@ -9,13 +9,14 @@ import { DefaultAsyncActionCreatorWithMeta } from "./default-async-action-creato
  * @param dispatch
  */
 export const tryCatchDispatch = (dispatch: ((action: Action) => void)) =>
-	async <Success, Meta> (actionCreator: DefaultAsyncActionCreatorWithMeta<Success, Meta>, handler: () => Promise<Success> | Success) => {
+	async <Success, Meta> (actionCreator: DefaultAsyncActionCreatorWithMeta<Success, Meta>, handler: () => Promise<Success> | Success): Promise<Success> => {
 		dispatch(actionCreator.start());
 
 		try {
 			const data = await handler();
 			// @ts-ignore
 			dispatch(actionCreator.success(data));
+			return data;
 
 		} catch (e) {
 			dispatch(actionCreator.failure(e));
